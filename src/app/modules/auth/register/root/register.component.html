@@ -200,16 +200,16 @@
             </svg>
           </label>
 
-          <div class="grid grid-cols-2 gap-2 mt-2">
+          <div class="grid grid-cols-3 gap-2 mt-2">
             <div class="flex items-center border-2 rounded px-2">
               <label
-                for="horizontal-list-radio-license"
+                for="Female"
                 class="w-full py-3 ml-2 text-sm font-normal text-black"
                 >Female
               </label>
               <input
                 formControlName="gender"
-                id="horizontal-list-radio-license"
+                id="Female"
                 type="radio"
                 value="Female"
                 name="gender"
@@ -218,32 +218,34 @@
             </div>
             <div class="flex items-center border-2 rounded px-2">
               <label
-                for="horizontal-list-radio-license"
+                for="Male"
                 class="w-full py-3 ml-2 text-sm font-normal text-black"
                 >Male
               </label>
               <input
                 formControlName="gender"
-                id="horizontal-list-radio-license"
+                id="Male"
                 type="radio"
                 value="Male"
                 name="gender"
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"
               />
             </div>
-            <!-- <div class="flex items-center border-2 rounded px-2">
+            <div class="flex items-center border-2 rounded px-2">
               <label
-                for="horizontal-list-radio-license"
+                for="Custom"
                 class="w-full py-3 ml-2 text-sm font-normal text-black"
                 >Custom
               </label>
               <input
-                id="horizontal-list-radio-license"
+                formControlName="gender"
+                id="Custom"
                 type="radio"
-                value=""
-                name="list-radio"
+                value="Custom"
+                name="gender"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"
               />
-            </div> -->
+            </div>
             <p
               *ngIf="registerForm.controls['gender'].errors?.['required']&&registerForm.controls['gender'].touched"
               class="flex items-center text-red-400 font-normal text-sm px-2"
