@@ -1,0 +1,91 @@
+<section class="mt-10 bg-white p-2 -m-5">
+  <!-- <h1 class="text-3xl font-semibold px-3">Photo</h1>
+  <div *ngFor="let photo of posts" class="bg-white p-5 mb-2 rounded">
+    <div class="flex items-center justify-between">
+      <div class="flex">
+        <div class="w-11 h-11 rounded-full overflow-hidden mr-3">
+          <img
+            src="https://e0.pxfuel.com/wallpapers/578/989/desktop-wallpaper-aesthetic-anime-boy-nice-in-2020-aesthetic-boys-anime-aesthetic-anime-couple.jpg"
+            alt=""
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div>
+          <p class="text-lg font-medium">Amal Sigi</p>
+          <p class="text-xs text-gray-400">{{ photo.post_time | date }}</p>
+        </div>
+      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="23"
+        height="23"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#4a90e2"
+        stroke-width="2"
+        stroke-linecap="butt"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="1"></circle>
+        <circle cx="19" cy="12" r="1"></circle>
+        <circle cx="5" cy="12" r="1"></circle>
+      </svg>
+    </div>
+
+    <div class="py-3">
+      <img [src]="photo.post_link" alt="" class="mx-auto" />
+    </div>
+    <div>
+      <p>
+        {{ photo.caption }}
+      </p>
+    </div>
+    <div class="mt-5 flex items-center">
+      <button class="flex items-center mr-5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="23"
+          height="23"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#4a90e2"
+          stroke-width="2"
+          stroke-linecap="butt"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"
+          ></path>
+        </svg>
+        <span class="ml-1">Like</span>
+      </button>
+      <button class="flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="23"
+          height="23"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#4a90e2"
+          stroke-width="2"
+          stroke-linecap="butt"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+          ></path>
+        </svg>
+        <span>Comment</span>
+      </button>
+    </div>
+  </div> -->
+
+  <div class="grid grid-cols-3 gap-3">
+    <div *ngFor="let photo of posts">
+      <div class="aspect-square overflow-hidden hover:fade">
+        <img [src]="photo.post_link" class="aspect-square" />
+      </div>
+    </div>
+  </div>
+</section>

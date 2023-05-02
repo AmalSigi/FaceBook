@@ -95,13 +95,63 @@ export class UsersService {
 
       profile_pic: 'https://randomuser.me/api/portraits/men/18.jpg',
 
-      active: true,
+      active: false,
 
       posts: [
         {
           post_id: 1,
           post_link:
             'https://images.unsplash.com/photo-1510200235188-4088c8a62f05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80',
+          post_time: '2023-04-26T10:30:00.000Z',
+          caption:
+            'This is what pure happiness looks like. #catlove #felinefriendship',
+        },
+
+        {
+          post_id: 2,
+          post_link: 'https://loremflickr.com/1200/800?random=486',
+          post_time: '2023-04-24T20:00:00.000Z',
+        },
+      ],
+    },
+    {
+      name: 'Akshara',
+
+      profile_pic:
+        'https://cdn4.sharechat.com/girlsprofilepic_33f8d988_1609763004618_sc_cmprsd_40.jpg',
+
+      active: true,
+
+      posts: [
+        {
+          post_id: 1,
+          post_link:
+            'https://akm-img-a-in.tosshub.com/indiatoday/images/story/202102/google_pay__7__1200x768.jpeg?size=690:388',
+          post_time: '2023-04-26T10:30:00.000Z',
+          caption:
+            'This is what pure happiness looks like. #catlove #felinefriendship',
+        },
+
+        {
+          post_id: 2,
+          post_link: 'https://loremflickr.com/1200/800?random=486',
+          post_time: '2023-04-24T20:00:00.000Z',
+        },
+      ],
+    },
+    {
+      name: 'Krishnan',
+
+      profile_pic:
+        'https://i.pinimg.com/564x/eb/41/aa/eb41aaf0d1e058d8e7f5d9cd5ede5f4f.jpg',
+
+      active: true,
+
+      posts: [
+        {
+          post_id: 1,
+          post_link:
+            'https://cdna.artstation.com/p/assets/images/images/024/179/608/large/-aesthetic-space-boy.jpg?1581551395',
           post_time: '2023-04-26T10:30:00.000Z',
           caption:
             'This is what pure happiness looks like. #catlove #felinefriendship',

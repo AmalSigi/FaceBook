@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { FeedComponent } from './pages/feed/feed.component';
 import { FriendsComponent } from './pages/friends/friends.component';
 import { NavComponent } from './pages/nav/nav.component';
+import { ProfileComponent } from './pages/profile/root/profile.component';
 
 @NgModule({
   declarations: [HomeComponent, NavComponent, FriendsComponent, FeedComponent],

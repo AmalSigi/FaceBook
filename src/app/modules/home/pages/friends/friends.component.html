@@ -1,6 +1,9 @@
 <div class="flex items-center justify-between p-6 border-b-[1px]">
   <div class="flex items-center">
-    <div class="w-14 h-14 rounded-full overflow-hidden mr-3">
+    <div
+      class="w-14 h-14 rounded-full overflow-hidden mr-3"
+      routerLink="/home/profile"
+    >
       <img
         src="https://e0.pxfuel.com/wallpapers/578/989/desktop-wallpaper-aesthetic-anime-boy-nice-in-2020-aesthetic-boys-anime-aesthetic-anime-couple.jpg"
         alt=""
@@ -12,21 +15,23 @@
       <p class="text-lg font-medium">Amal Sigi</p>
     </div>
   </div>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="23"
-    height="23"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="#4a90e2"
-    stroke-width="2"
-    stroke-linecap="butt"
-    stroke-linejoin="round"
-  >
-    <path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" />
-    <circle cx="12" cy="10" r="3" />
-    <circle cx="12" cy="12" r="10" />
-  </svg>
+  <button routerLink="/home/profile" title="Profile">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="23"
+      height="23"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#4a90e2"
+      stroke-width="2"
+      stroke-linecap="butt"
+      stroke-linejoin="round"
+    >
+      <path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" />
+      <circle cx="12" cy="10" r="3" />
+      <circle cx="12" cy="12" r="10" />
+    </svg>
+  </button>
 </div>
 <div class="flex items-center justify-between">
   <h2 class="p-2 px-5 font-semibold text-lg text-zinc-400">Friends</h2>
@@ -47,8 +52,11 @@
   </svg>
 </div>
 
-<div *ngFor="let item of users" class="p-2 px-5 hover:bg-gray-200">
-  <div class="flex justify-between items-center">
+<div *ngFor="let item of users">
+  <div
+    class="flex hover:bg-gray-200 justify-between items-center p-2 px-5"
+    *ngIf="item.active"
+  >
     <div class="flex">
       <div class="w-9 h-9 rounded-full overflow-hidden mr-3">
         <img
