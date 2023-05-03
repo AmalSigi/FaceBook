@@ -1,5 +1,5 @@
 <section class="bg-white/80 fixed top-0 bottom-0 left-0 right-0 h-screen p-5">
-  <div class="bg-white rounded-lg shadow-xl w-[28em] mx-auto my-auto mt-[5%]">
+  <div class="bg-white rounded-lg shadow-xl w-[28em] mx-auto my-auto mt-[2%]">
     <div class="flex item-center justify-between px-5 py-3 border-b-[1px]">
       <div>
         <h1 class="font-bold text-3xl font">Sign Up</h1>
@@ -28,17 +28,17 @@
         <div class="grid grid-cols-2 gap-2 mb-2 w-full">
           <div class="flex items-center relative">
             <input
-              formControlName="firstName"
+              formControlName="first_name"
               type="text"
               placeholder="First name"
               class="border-2 rounded p-2"
               [ngClass]="{
-                'border-red-400 ':registerForm.controls['firstName'].errors?.['required']&&registerForm.controls['firstName'].touched
+                'border-red-400 ':registerForm.controls['first_name'].errors?.['required']&&registerForm.controls['first_name'].touched
               }"
             />
 
             <svg
-              *ngIf="registerForm.controls['firstName'].errors?.['required']&&registerForm.controls['firstName'].touched"
+              *ngIf="registerForm.controls['first_name'].errors?.['required']&&registerForm.controls['first_name'].touched"
               fill="currentColor"
               width="20"
               height="20"
@@ -58,16 +58,16 @@
           </div>
           <div class="flex items-center relative">
             <input
-              formControlName="lastName"
+              formControlName="last_name"
               type="text"
               placeholder="Surname"
               class="border-2 rounded p-2"
               [ngClass]="{
-                'border-red-400 ':registerForm.controls['lastName'].errors?.['required']&&registerForm.controls['lastName'].touched
+                'border-red-400 ':registerForm.controls['last_name'].errors?.['required']&&registerForm.controls['last_name'].touched
               }"
             />
             <svg
-              *ngIf="registerForm.controls['lastName'].errors?.['required']&&registerForm.controls['lastName'].touched"
+              *ngIf="registerForm.controls['last_name'].errors?.['required']&&registerForm.controls['last_name'].touched"
               fill="currentColor"
               width="20"
               height="20"
@@ -87,6 +87,37 @@
           </div>
         </div>
         <div class="grid grid-cols-1 gap-2 mb-2">
+          <div class="flex items-center relative">
+            <input
+              formControlName="username"
+              type="text"
+              name=""
+              id=""
+              class="border-2 rounded p-2 w-full"
+              placeholder="Username"
+              [ngClass]="{
+                'border-red-400 ':registerForm.controls['username'].errors?.['required']&&registerForm.controls['username'].touched
+              }"
+            />
+            <svg
+              *ngIf="registerForm.controls['username'].errors?.['required']&&registerForm.controls['username'].touched"
+              fill="currentColor"
+              width="20"
+              height="20"
+              stroke-linejoin="round"
+              stroke-miterlimit="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              class="absolute right-0 mr-3 text-red-600"
+            >
+              <path
+                d="m12.002 21.534c5.518 0 9.998-4.48 9.998-9.998s-4.48-9.997-9.998-9.997c-5.517 0-9.997 4.479-9.997 9.997s4.48 9.998 9.997 9.998zm0-1.5c-4.69 0-8.497-3.808-8.497-8.498s3.807-8.497 8.497-8.497 8.498 3.807 8.498 8.497-3.808 8.498-8.498 8.498zm0-6.5c-.414 0-.75-.336-.75-.75v-5.5c0-.414.336-.75.75-.75s.75.336.75.75v5.5c0 .414-.336.75-.75.75zm-.002 3c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"
+                fill-rule="nonzero"
+              />
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
           <div class="flex items-center relative">
             <input
               formControlName="email"
@@ -154,23 +185,24 @@
           <label class="flex items-center text-gray-500 font-medium text-sm"
             >Date of birth
             <svg
-              fill="currentColor"
-              width="20"
-              height="20"
-              stroke-linejoin="round"
-              stroke-miterlimit="2"
-              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
-              class="absolute right-0 mr-3 text-red-600"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#9b9b9b"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="ml-1"
             >
-              <path
-                d="m12.002 21.534c5.518 0 9.998-4.48 9.998-9.998s-4.48-9.997-9.998-9.997c-5.517 0-9.997 4.479-9.997 9.997s4.48 9.998 9.997 9.998zm0-1.5c-4.69 0-8.497-3.808-8.497-8.498s3.807-8.497 8.497-8.497 8.498 3.807 8.498 8.497-3.808 8.498-8.498 8.498zm0-6.5c-.414 0-.75-.336-.75-.75v-5.5c0-.414.336-.75.75-.75s.75.336.75.75v5.5c0 .414-.336.75-.75.75zm-.002 3c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"
-                fill-rule="nonzero"
-              />
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
             </svg>
           </label>
 
-          <div class="grid grid-cols-3 gap-2 mt-2">
+          <!-- <div class="grid grid-cols-3 gap-2 mt-2">
             <select name="" id="" class="border-2 rounded p-1">
               <option value="">31</option></select
             ><select name="" id="" class="border-2 rounded p-1">
@@ -178,25 +210,29 @@
             ><select name="" id="" class="border-2 rounded p-1">
               <option value="">2023</option>
             </select>
+          </div> -->
+          <div>
+            <input type="date" formControlName="birthday" />
           </div>
         </div>
         <div class="mt-5">
           <label class="flex items-center text-gray-500 font-medium text-sm"
             >Gender
             <svg
-              fill="currentColor"
-              width="20"
-              height="20"
-              stroke-linejoin="round"
-              stroke-miterlimit="2"
-              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
-              class="absolute right-0 mr-3 text-red-600"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#9b9b9b"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="ml-1"
             >
-              <path
-                d="m12.002 21.534c5.518 0 9.998-4.48 9.998-9.998s-4.48-9.997-9.998-9.997c-5.517 0-9.997 4.479-9.997 9.997s4.48 9.998 9.997 9.998zm0-1.5c-4.69 0-8.497-3.808-8.497-8.498s3.807-8.497 8.497-8.497 8.498 3.807 8.498 8.497-3.808 8.498-8.498 8.498zm0-6.5c-.414 0-.75-.336-.75-.75v-5.5c0-.414.336-.75.75-.75s.75.336.75.75v5.5c0 .414-.336.75-.75.75zm-.002 3c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"
-                fill-rule="nonzero"
-              />
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
             </svg>
           </label>
 
@@ -211,7 +247,7 @@
                 formControlName="gender"
                 id="Female"
                 type="radio"
-                value="Female"
+                value="female"
                 name="gender"
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"
               />
@@ -226,7 +262,7 @@
                 formControlName="gender"
                 id="Male"
                 type="radio"
-                value="Male"
+                value="male"
                 name="gender"
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"
               />
@@ -246,7 +282,7 @@
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"
               />
             </div>
-            <p
+            <!-- <p
               *ngIf="registerForm.controls['gender'].errors?.['required']&&registerForm.controls['gender'].touched"
               class="flex items-center text-red-400 font-normal text-sm px-2"
             >
@@ -270,7 +306,7 @@
                 <line x1="12" y1="9" x2="12" y2="13"></line>
                 <line x1="12" y1="17" x2="12.01" y2="17"></line>
               </svg>
-            </p>
+            </p> -->
           </div>
         </div>
       </form>

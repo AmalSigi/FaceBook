@@ -7,11 +7,18 @@ import { UsersService } from 'src/app/shared/users.service';
 })
 export class FeedComponent {
   users!: any[];
+  public showUpolod: boolean = false;
   constructor(private readonly data: UsersService) {
     this.users = this.data['users'];
   }
 
   ngOnint() {
     console.log(this.users);
+  }
+  public showUpolodtemp() {
+    this.showUpolod = true;
+  }
+  public unshowUpolodtemp(value: boolean) {
+    this.showUpolod = false;
   }
 }

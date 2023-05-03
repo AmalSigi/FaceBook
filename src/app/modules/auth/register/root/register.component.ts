@@ -1,24 +1,36 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/authentication/service/auth.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {
-  constructor() {}
+  constructor(
+    private readonly router: Router,
+    private readonly auth: AuthService
+  ) {}
 
   public registerForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
+    first_name: new FormControl('', Validators.required),
+    last_name: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
-    dob: new FormControl('11-11-11', Validators.required),
+    birthday: new FormControl('', Validators.required),
     gender: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
   });
 
-  public signUp(): void {
-    const body = this.registerForm.value;
-    console.log(body);
+  public signUp() {
+    console.log(this.registerForm.value);
+    this.auth
+      .postRegister(this.registerForm.value)
+      .subscribe((response: any) => {
+        if (response) {
+          this.router.navigate(['login']);
+        }
+      });
   }
 }

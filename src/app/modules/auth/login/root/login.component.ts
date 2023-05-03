@@ -1,13 +1,17 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/core/authentication/service/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  constructor(private readonly router: Router) {}
+  constructor(
+    private readonly router: Router,
+    private readonly auth: AuthService
+  ) {}
 
   public loginForm = new FormGroup({
     email: new FormControl('', Validators.required),
@@ -19,15 +23,15 @@ export class LoginComponent {
   public login() {
     const body = this.loginForm.value;
     console.log(body);
-    // this.http.login(body).subscribe((response: any) => {
-    //   if (response) {
-    //     localStorage.setItem(
-    //       'access_token',
-    //       JSON.stringify(response.access_token)
-    //     );
+    this.auth.postLogin(body).subscribe((response: any) => {
+      if (response) {
+        localStorage.setItem(
+          'access_token',
+          JSON.stringify(response.access_token)
+        );
 
-    //     this.router.navigate(['./dashboard/overView']);
-    //   }
-    // });
+        this.router.navigate(['./home']);
+      }
+    });
   }
 }
