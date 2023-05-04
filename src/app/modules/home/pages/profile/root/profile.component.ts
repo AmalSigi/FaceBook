@@ -9,7 +9,7 @@ import { Iprofile } from 'src/app/shared/interface/profile/Iprofile';
 export class ProfileComponent implements OnInit {
   constructor(private readonly profile: ProfileService) {}
   // public profileDetailes!: Observable<Iprofile>;
-  public profileDetailes!: Observable<any>;
+  public profileDetailes!: any;
   public showUpolod: boolean = false;
 
   ngOnInit(): void {

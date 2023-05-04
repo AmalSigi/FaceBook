@@ -37,8 +37,8 @@
 
         <div class="grid grid-rows-2 mt-9 mx-5">
           <p class="text-4xl text-white font-medium">
-            {{ (profileDetailes | async)?.first_name }}
-            {{ (profileDetailes | async)?.last_name }}
+            {{ profileDetailes?.first_name }}
+            {{ profileDetailes?.last_name }}
           </p>
           <div class="grid grid-cols-4 gap-5 mt-1">
             <div
