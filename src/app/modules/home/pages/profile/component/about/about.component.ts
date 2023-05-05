@@ -12,7 +12,7 @@ export class AboutComponent {
     this.getData();
   }
   public getData() {
-    this.profile.getProfile('amal').subscribe((repo: any) => {
+    this.profile.getProfile().subscribe((repo: any) => {
       this.profileDetailes = repo;
       console.log(repo);
     });

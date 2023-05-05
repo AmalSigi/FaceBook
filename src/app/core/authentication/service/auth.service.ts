@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { environment } from 'src/enviroment/enviroment';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,10 +11,10 @@ export class AuthService {
   constructor(private readonly http: HttpClient) {}
 
   public postLogin(data: any): Observable<any> {
-    return this.http.post(`${this.url}/login`, data);
+    return this.http.post(`${environment.url}/auth/login`, data);
   }
 
   public postRegister(data: any): Observable<any> {
-    return this.http.post(`${this.url}/register`, data);
+    return this.http.post(`${environment.url}/auth/register`, data);
   }
 }

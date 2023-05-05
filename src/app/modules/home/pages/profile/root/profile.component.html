@@ -7,7 +7,7 @@
     />
     <div class="flex items-center justify-between -mt-32">
       <div class="flex items-center w-full">
-        <div class="w-[10em] h-[10em] relative rounded-full mr-3">
+        <div class="w-[10em] h-[10em] relative rounded-full mr-3 z-10">
           <img
             [src]="profilepic"
             alt=""
@@ -17,7 +17,7 @@
           />
         </div>
 
-        <div class="grid grid-rows-1 mt-9 mx-5">
+        <div class="grid grid-rows-1 mx-5">
           <p class="text-4xl text-white font-medium">
             {{ profileDetailes?.first_name }}
             {{ profileDetailes?.last_name }}
@@ -25,8 +25,10 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-between absolute bottom-0 w-full">
-      <div class="flex items-center mt-1 mr-auto ml-44">
+    <div
+      class="flex justify-between shadow absolute bottom-0 w-full border-2 bg-white -mb-2 min-w-min"
+    >
+      <div class="grid grid-cols-4 mt-1 mr-auto ml-44">
         <div
           routerLink="timeline"
           routerLinkActive=" border-b-2 border-blue-500 text-slate-950"
@@ -56,8 +58,8 @@
           Photos
         </div>
       </div>
-      <div class="ml-auto mt-6">
-        <button class="" (click)="showEditemp()" title="edit">
+      <div class="mt-7">
+        <button class="mr-5" (click)="showEditemp()" title="edit">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="26"

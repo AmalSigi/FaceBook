@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from 'src/app/core/http/profile/profile.service';
-import { Iprofile } from 'src/app/shared/interface/profile/Iprofile';
+import { environment } from 'src/enviroment/enviroment';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
-  constructor(private readonly profile: ProfileService) {}
+  constructor(
+    private readonly profile: ProfileService,
+    private activatedRoute: ActivatedRoute
+  ) {}
   // public profileDetailes!: Observable<Iprofile>;
   public profileDetailes!: any;
   public showUpolod: boolean = false;
@@ -19,9 +22,9 @@ export class ProfileComponent implements OnInit {
   }
 
   public getProfileDetailes(): void {
-    this.profile.getProfile('amal').subscribe((repo: any) => {
+    this.profile.getProfile().subscribe((repo: any) => {
       this.profileDetailes = repo;
-      this.profilepic = `https://api-sales-app.josetovar.dev/pictures/${repo.picture}`;
+      this.profilepic = `${environment.url}/pictures/${repo.picture}`;
     });
   }
 

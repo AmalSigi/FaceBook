@@ -24,7 +24,7 @@ export class EditProfileComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.profile.getProfile('amal').subscribe((repo: any) => {
+    this.profile.getProfileByUsername('amal').subscribe((repo: any) => {
       this.editForm.setValue(repo);
       console.log(this.data);
     });

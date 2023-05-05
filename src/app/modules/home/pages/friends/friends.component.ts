@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/core/http/profile/profile.service';
 import { UsersService } from 'src/app/shared/users.service';
+import { environment } from 'src/enviroment/enviroment';
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.component.html',
@@ -23,9 +24,9 @@ export class FriendsComponent {
   }
 
   public getProfileDetailes(): void {
-    this.profile.getProfile('amal').subscribe((repo: any) => {
+    this.profile.getProfile().subscribe((repo: any) => {
       this.profileDetailes = repo;
-      this.profilepic = `https://api-sales-app.josetovar.dev/pictures/${repo.picture}`;
+      this.profilepic = `${environment.url}/pictures/${repo.picture}`;
     });
   }
 
