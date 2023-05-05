@@ -24,7 +24,6 @@ export class RegisterComponent {
   });
 
   public signUp() {
-    console.log(this.registerForm.value);
     this.auth
       .postRegister(this.registerForm.value)
       .subscribe((response: any) => {

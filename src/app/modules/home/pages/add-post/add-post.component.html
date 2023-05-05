@@ -2,7 +2,7 @@
   <div class="bg-white rounded-lg shadow-xl w-[40em] mx-auto my-auto mt-[2%]">
     <div class="flex item-center justify-between px-5 py-3 border-b-[1px]">
       <div>
-        <h1 class="font-bold text-xl font">Upload Image</h1>
+        <h1 class="font-bold text-xl font">New Post</h1>
         <p class="font-light text-zinc-700">Let them know.</p>
       </div>
       <button (click)="unshowUpolodtemp()">
@@ -23,7 +23,7 @@
       </button>
     </div>
 
-    <div class="p-10 flex items-center">
+    <div class="p-10 px-16 flex items-center" *ngIf="picShowDiv">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="60"
@@ -35,10 +35,43 @@
         />
       </svg>
 
+      <div class="form-group">
+        <label
+          class="bg-blue-500 p-2 w-full text-center rounded font-semibold text-white text-sm"
+        >
+          <span> select from computer</span>
+
+          <input
+            type="file"
+            id="file"
+            hidden="true"
+            (change)="fileImport($event)"
+          />
+        </label>
+      </div>
+    </div>
+
+    <div
+      class="grid grid-row-3 gap-4 pb-7 mt-10 mx-auto w-72"
+      *ngIf="!picShowDiv"
+    >
+      <img [src]="selectdPic" alt="" />
+
+      <textarea
+        #caption
+        name=""
+        id=""
+        cols="20"
+        rows="4"
+        placeholder="enter your thoughts"
+        class="border-2 p-2"
+      ></textarea>
+
       <button
-        class="bg-blue-500 mx-5 p-2 rounded font-semibold text-white text-sm"
+        (click)="uploadFileToActivity()"
+        class="bg-blue-500 px-3 py-2 mx-5 rounded hover:bg-blue-600 text-white"
       >
-        select from computer
+        Upload
       </button>
     </div>
   </div>

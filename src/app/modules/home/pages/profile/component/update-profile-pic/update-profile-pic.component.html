@@ -54,15 +54,15 @@
       </div>
     </div>
 
-    <div *ngIf="!picShowDiv" class="p-10 mx-auto">
-      <img
-        src="https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701085049.jpg"
-        alt=""
-      />
+    <div
+      *ngIf="!picShowDiv"
+      class="grid grid-row-2 gap-4 pb-7 mt-10 mx-auto w-72"
+    >
+      <img [src]="selectedPic" alt="" />
 
       <button
         (click)="uploadFileToActivity()"
-        class="bg-blue-500 px-3 py-2 rounded hover:bg-blue-600 text-white"
+        class="bg-blue-500 px-3 py-2 mx-5 rounded hover:bg-blue-600 text-white"
       >
         Upload
       </button>

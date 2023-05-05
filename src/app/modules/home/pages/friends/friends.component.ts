@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfileService } from 'src/app/core/http/profile/profile.service';
 import { UsersService } from 'src/app/shared/users.service';
 @Component({
   selector: 'app-friends',
@@ -7,11 +8,25 @@ import { UsersService } from 'src/app/shared/users.service';
 })
 export class FriendsComponent {
   users!: any[];
+  profileDetailes!: any;
+  profilepic!: any;
   constructor(
     private readonly data: UsersService,
-    private readonly route: Router
+    private readonly route: Router,
+    private readonly profile: ProfileService
   ) {
     this.users = this.data['users'];
+  }
+
+  ngOnInit() {
+    this.getProfileDetailes();
+  }
+
+  public getProfileDetailes(): void {
+    this.profile.getProfile('amal').subscribe((repo: any) => {
+      this.profileDetailes = repo;
+      this.profilepic = `https://api-sales-app.josetovar.dev/pictures/${repo.picture}`;
+    });
   }
 
   public logOut() {

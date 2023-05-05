@@ -4,15 +4,13 @@
       class="w-14 h-14 rounded-full overflow-hidden mr-3"
       routerLink="/home/profile"
     >
-      <img
-        src="https://e0.pxfuel.com/wallpapers/578/989/desktop-wallpaper-aesthetic-anime-boy-nice-in-2020-aesthetic-boys-anime-aesthetic-anime-couple.jpg"
-        alt=""
-        class="w-full h-full object-cover"
-      />
+      <img [src]="profilepic" alt="" class="w-full h-full object-cover" />
     </div>
 
     <div>
-      <p class="text-lg font-medium">Amal Sigi</p>
+      <p class="text-lg font-medium">
+        {{ profileDetailes?.first_name }} {{ profileDetailes?.last_name }}
+      </p>
     </div>
   </div>
   <button routerLink="/home/profile" title="Profile">

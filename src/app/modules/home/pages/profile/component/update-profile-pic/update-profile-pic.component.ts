@@ -4,12 +4,12 @@ import { ProfileService } from 'src/app/core/http/profile/profile.service';
 @Component({
   selector: 'app-update-profile-pic',
   templateUrl: './update-profile-pic.component.html',
-  styleUrls: ['./update-profile-pic.component.scss'],
 })
 export class UpdateProfilePicComponent {
   @Output() childEvent = new EventEmitter<boolean>();
   public fileToUpload!: File;
   public picShowDiv: boolean = true;
+  public selectedPic!: any;
   constructor(private readonly profilepic: ProfileService) {}
   public unshowUpolodtemp(): void {
     const value: boolean = false;
@@ -19,13 +19,18 @@ export class UpdateProfilePicComponent {
   public fileImport(event: any) {
     this.fileToUpload = event.target.files[0];
     this.picShowDiv = false;
+    const pic = new FileReader();
+    pic.readAsDataURL(this.fileToUpload);
+    pic.onload = () => {
+      this.selectedPic = pic.result;
+    };
   }
 
-  uploadFileToActivity() {
+  public uploadFileToActivity() {
     this.profilepic.postProfilePicture(this.fileToUpload).subscribe({
       next: () => {
         // this.toastr.import();
-        // this.getClient();
+        this.unshowUpolodtemp();
         console.log('done');
       },
       error: () => {},

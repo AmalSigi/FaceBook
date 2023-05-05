@@ -11,6 +11,6 @@ export class PostService {
   constructor(private readonly http: HttpClient) {}
 
   public postPosts(post: any): Observable<any> {
-    return this.http.post(`${this.url}/picture`, post);
+    return this.http.post(`${this.url}`, post);
   }
 }
