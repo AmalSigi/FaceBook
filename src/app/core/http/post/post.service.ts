@@ -7,8 +7,6 @@ import { environment } from 'src/enviroment/enviroment';
   providedIn: 'root',
 })
 export class PostService {
-  url = 'https://api-sales-app.josetovar.dev';
-
   constructor(private readonly http: HttpClient) {}
 
   public postPosts(post: any): Observable<any> {

@@ -3,9 +3,9 @@
     <div *ngFor="let photo of postDetailes">
       <div
         class="aspect-square overflow-hidden hover:fade"
-        (click)="clickImg(photo.picture, photo.content)"
+        (click)="clickImg(photo.post.picture, photo.post.content)"
       >
-        <img [src]="photo.picture" class="aspect-square" />
+        <img [src]="photo.post.picture" class="aspect-square" />
       </div>
     </div>
   </div>

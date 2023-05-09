@@ -51,23 +51,18 @@
 </div>
 
 <div *ngFor="let item of users">
-  <div
-    class="flex hover:bg-gray-200 justify-between items-center p-2 px-5"
-    *ngIf="item.active"
-  >
+  <div class="flex hover:bg-gray-200 justify-between items-center p-2 px-5">
     <div class="flex">
       <div class="w-9 h-9 rounded-full overflow-hidden mr-3">
-        <img
-          [src]="item.profile_pic"
-          alt=""
-          class="w-full h-full object-cover"
-        />
+        <img [src]="item.picture" alt="" class="w-full h-full object-cover" />
       </div>
       <div>
-        <p class="text-xs font-medium mt-2">{{ item.name }}</p>
+        <p class="text-xs font-medium mt-2">
+          {{ item.first_name }} {{ item.last_name }}
+        </p>
       </div>
     </div>
-    <div *ngIf="item.active; else offline" class="text-green-600">
+    <div *ngIf="true; else offline" class="text-green-600">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"

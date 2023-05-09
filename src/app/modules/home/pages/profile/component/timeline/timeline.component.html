@@ -5,15 +5,19 @@
       <div class="flex">
         <div class="w-11 h-11 rounded-full overflow-hidden mr-3">
           <img
-            src="https://e0.pxfuel.com/wallpapers/578/989/desktop-wallpaper-aesthetic-anime-boy-nice-in-2020-aesthetic-boys-anime-aesthetic-anime-couple.jpg"
+            [src]="userDetailes.picture"
             alt=""
             class="w-full h-full object-cover"
           />
         </div>
 
         <div>
-          <p class="text-lg font-medium">Amal Sigi</p>
-          <p class="text-xs text-gray-400">{{ photo.created_at | date }}</p>
+          <p class="text-lg font-medium">
+            {{ userDetailes.first_name }} {{ userDetailes.last_name }}
+          </p>
+          <p class="text-xs text-gray-400">
+            {{ photo.post.created_at | date }}
+          </p>
         </div>
       </div>
       <div title="more">
@@ -36,11 +40,11 @@
     </div>
 
     <div class="py-3">
-      <img [src]="photo.picture" alt="" class="mx-auto" />
+      <img [src]="photo.post.picture" alt="" class="mx-auto" />
     </div>
     <div>
       <p>
-        {{ photo.content }}
+        {{ photo.post.content }}
       </p>
     </div>
     <div class="mt-5 flex items-center">

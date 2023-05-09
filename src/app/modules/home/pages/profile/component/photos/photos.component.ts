@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/core/http/post/post.service';
 import { ProfileService } from 'src/app/core/http/profile/profile.service';
 import { environment } from 'src/enviroment/enviroment';
@@ -15,11 +16,21 @@ export class PhotosComponent {
   public picShow: boolean = false;
   constructor(
     private readonly profile: ProfileService,
-    private readonly post: PostService // private activatedRoute: ActivatedRoute
+    private readonly post: PostService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.getProfileDetailes();
+    this.activatedRoute.params.subscribe(
+      (params: { [source: string]: string }) => {
+        this.username = params['username'];
+        if (this.username) {
+          this.getPostItems(this.username);
+        } else {
+          this.getProfileDetailes();
+        }
+      }
+    );
   }
 
   // public getProfileDetailes() {
@@ -38,18 +49,18 @@ export class PhotosComponent {
   }
 
   public getPostItems(username: any) {
-    console.log(username);
-
     this.post.getPost(username).subscribe((respo: any) => {
       this.postDetailes = respo;
+      console.log(respo);
       this.postDetailes.forEach((item: any) => {
-        item.picture = `${environment.url}/pictures/` + item.picture;
+        item.post.picture = `${environment.url}/pictures/` + item.post.picture;
       });
     });
   }
 
   public clickImg(picture: any, content: any) {
     this.Show();
+    console.log(picture);
     this.clickedPic = picture;
     this.clickcontent = content;
   }
@@ -58,7 +69,6 @@ export class PhotosComponent {
     this.picShow = true;
   }
   public close() {
-    console.log('hi');
     this.picShow = false;
   }
 }

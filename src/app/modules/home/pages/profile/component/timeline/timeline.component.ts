@@ -11,14 +11,27 @@ import { environment } from 'src/enviroment/enviroment';
 })
 export class TimelineComponent implements OnInit {
   public username: any;
-  public postDetailes!: any[];
+  public postDetailes: any[] = [];
+  public userDetailes: any = [];
+  public photo!: any[];
   constructor(
     private readonly profile: ProfileService,
-    private readonly post: PostService // private activatedRoute: ActivatedRoute
+    private readonly post: PostService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.getProfileDetailes();
+    this.activatedRoute.params.subscribe(
+      (params: { [source: string]: string }) => {
+        this.username = params['username'];
+        if (this.username) {
+          this.friendProfile(this.username);
+          this.getPostItems(this.username);
+        } else {
+          this.getProfileDetailes();
+        }
+      }
+    );
   }
 
   // public getProfileDetailes() {
@@ -29,8 +42,22 @@ export class TimelineComponent implements OnInit {
   //   });
   // }
 
+  public friendProfile(username: any) {
+    this.profile.getProfileByUsername(username).subscribe({
+      next: (repo: any) => {
+        console.log(repo);
+        this.userDetailes = repo;
+        this.userDetailes.picture = `${environment.url}/pictures/${repo.picture}`;
+      },
+    });
+  }
+
   public getProfileDetailes(): void {
     this.profile.getProfile().subscribe((repo: any) => {
+      console.log(repo);
+      this.userDetailes = repo;
+      this.userDetailes.picture =
+        `${environment.url}/pictures/` + this.userDetailes.picture;
       this.username = repo.username;
       this.getPostItems(this.username);
     });
@@ -39,8 +66,10 @@ export class TimelineComponent implements OnInit {
   public getPostItems(username: any) {
     this.post.getPost(username).subscribe((respo: any) => {
       this.postDetailes = respo;
+      console.log(respo);
       this.postDetailes.forEach((item: any) => {
-        item.picture = `${environment.url}/pictures/` + item.picture;
+        item.post.picture = `${environment.url}/pictures/` + item.post.picture;
+        item.post;
       });
     });
   }
