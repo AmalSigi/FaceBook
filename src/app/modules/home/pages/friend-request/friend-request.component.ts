@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TosterService } from 'src/app/core/authentication/service/toster.service';
 
 import { FriendshipService } from 'src/app/core/http/friendship/friendship.service';
 import { environment } from 'src/enviroment/enviroment';
