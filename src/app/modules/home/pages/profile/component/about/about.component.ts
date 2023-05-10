@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProfileService } from 'src/app/core/http/profile/profile.service';
+import { ProfileService } from '@profileservice/profile.service';
 
 @Component({
   selector: 'app-about',

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '@environment/enviroment';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FriendshipService } from 'src/app/core/http/friendship/friendship.service';
-import { UsersService } from 'src/app/shared/users.service';
-import { environment } from 'src/enviroment/enviroment';
+import { FriendshipService } from '@friendshipservice/friendship.service';
 
 @Component({
   selector: 'app-friends-list',
@@ -22,8 +21,15 @@ export class FriendsListComponent implements OnInit {
   public getFrindList() {
     this.frindship.getFriend().subscribe({
       next: (respo: any) => {
-        console.log(respo);
         this.users = respo;
+        this.users = this.users.filter((item, index) => {
+          return (
+            index ===
+            this.users.findIndex((obj) => {
+              return JSON.stringify(obj) === JSON.stringify(item);
+            })
+          );
+        });
         this.users.forEach((item: any) => {
           item.picture = `${environment.url}/pictures/${item.picture}`;
         });

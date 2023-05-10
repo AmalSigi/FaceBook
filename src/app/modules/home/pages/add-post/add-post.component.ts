@@ -1,6 +1,6 @@
 import { ElementRef, ViewChild } from '@angular/core';
+import { PostService } from '@posteservice/post.service';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { PostService } from 'src/app/core/http/post/post.service';
 
 @Component({
   selector: 'app-add-post',

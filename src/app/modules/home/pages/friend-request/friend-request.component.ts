@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { FriendshipService } from 'src/app/core/http/friendship/friendship.service';
-import { environment } from 'src/enviroment/enviroment';
+import { environment } from '@environment/enviroment';
+import { FriendshipService } from '@friendshipservice/friendship.service';
 
 @Component({
   selector: 'app-friend-request',

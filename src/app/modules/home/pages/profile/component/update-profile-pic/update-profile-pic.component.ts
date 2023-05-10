@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ProfileService } from 'src/app/core/http/profile/profile.service';
+import { ProfileService } from '@profileservice/profile.service';
 
 @Component({
   selector: 'app-update-profile-pic',

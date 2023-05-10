@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProfileService } from 'src/app/core/http/profile/profile.service';
 import { environment } from 'src/enviroment/enviroment';
+import { ProfileService } from '@profileservice/profile.service';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -12,7 +13,7 @@ export class ProfileComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private readonly router: Router
   ) {}
-  // public profileDetailes!: Observable<Iprofile>;
+
   public profileDetailes!: any;
   public showUpolod: boolean = false;
   public showEdit: boolean = false;
@@ -69,49 +70,18 @@ export class ProfileComponent implements OnInit {
       },
     });
   }
-  public changeTimeline() {
-    this.activatedRoute.queryParams.subscribe(
-      (params: { [source: string]: string }) => {
-        this.username = params['source'];
-        console.log(this.username);
-        if (this.username) {
-          this.router.navigate([`/home/profile/timeline/${this.username}`], {
-            queryParams: { source: `${this.username}` },
-          });
-        } else {
-          this.router.navigate([`/home/profile/timeline`]);
-        }
-      }
-    );
-  }
 
-  public changeAbout() {
+  public checkingParams(nav: any) {
+    console.log(nav);
     this.activatedRoute.queryParams.subscribe(
       (params: { [source: string]: string }) => {
         this.username = params['source'];
-        console.log(this.username);
         if (this.username) {
-          this.router.navigate([`/home/profile/about/${this.username}`], {
+          this.router.navigate([`/home/profile/${nav}/${this.username}`], {
             queryParams: { source: `${this.username}` },
           });
         } else {
-          this.router.navigate([`/home/profile/about`]);
-        }
-      }
-    );
-  }
-
-  public changePhoto() {
-    this.activatedRoute.queryParams.subscribe(
-      (params: { [source: string]: string }) => {
-        this.username = params['source'];
-        console.log(this.username);
-        if (this.username) {
-          this.router.navigate([`/home/profile/photos/${this.username}`], {
-            queryParams: { source: `${this.username}` },
-          });
-        } else {
-          this.router.navigate([`/home/profile/photos`]);
+          this.router.navigate([`/home/profile/${nav}`]);
         }
       }
     );

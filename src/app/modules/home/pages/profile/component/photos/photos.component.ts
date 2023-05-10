@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PostService } from 'src/app/core/http/post/post.service';
-import { ProfileService } from 'src/app/core/http/profile/profile.service';
-import { environment } from 'src/enviroment/enviroment';
+import { environment } from '@environment/enviroment';
+import { PostService } from '@posteservice/post.service';
+import { ProfileService } from '@profileservice/profile.service';
 
 @Component({
   selector: 'app-photos',
@@ -32,14 +32,6 @@ export class PhotosComponent {
       }
     );
   }
-
-  // public getProfileDetailes() {
-  //   this.activatedRoute.params.subscribe((params) => {
-  //     console.log(params);
-  //     // this.username = params['username'];
-  //     console.log(this.username);
-  //   });
-  // }
 
   public getProfileDetailes(): void {
     this.profile.getProfile().subscribe((repo: any) => {

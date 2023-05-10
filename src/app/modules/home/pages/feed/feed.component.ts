@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CommentService } from 'src/app/core/http/comment/comment.service';
-import { FriendshipService } from 'src/app/core/http/friendship/friendship.service';
-import { PostService } from 'src/app/core/http/post/post.service';
-import { ProfileService } from 'src/app/core/http/profile/profile.service';
-import { environment } from 'src/enviroment/enviroment';
+import { environment } from '@environment/enviroment';
+import { PostService } from '@posteservice/post.service';
+import { CommentService } from '@commentservice/comment.service';
+import { ProfileService } from '@profileservice/profile.service';
+import { FriendshipService } from '@friendshipservice/friendship.service';
 
 @Component({
   selector: 'app-feed',
@@ -48,6 +48,14 @@ export class FeedComponent implements OnInit {
     this.frindship.getFriend().subscribe({
       next: (respo: any) => {
         this.users = respo;
+        this.users = this.users.filter((item, index) => {
+          return (
+            index ===
+            this.users.findIndex((obj) => {
+              return JSON.stringify(obj) === JSON.stringify(item);
+            })
+          );
+        });
         this.users.forEach((item: any) => {
           item.picture = `${environment.url}/pictures/${item.picture}`;
           this.getPost(item.username, item);
@@ -102,8 +110,13 @@ export class FeedComponent implements OnInit {
   }
 
   public commentActive(id: any) {
-    this.commentboxId = id;
-    this.commentbox = !this.commentbox;
+    if (this.commentboxId == id) {
+      this.commentbox = false;
+      this.commentboxId = -1;
+    } else {
+      this.commentbox = true;
+      this.commentboxId = id;
+    }
   }
 
   public commentSend(post_id: number, content: string) {

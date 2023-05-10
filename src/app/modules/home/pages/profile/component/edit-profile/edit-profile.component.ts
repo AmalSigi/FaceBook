@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProfileService } from 'src/app/core/http/profile/profile.service';
+import { ProfileService } from '@profileservice/profile.service';
 
 @Component({
   selector: 'app-edit-profile',

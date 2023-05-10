@@ -5,7 +5,10 @@
         class="aspect-square overflow-hidden hover:fade"
         (click)="clickImg(photo.post.picture, photo.post.content)"
       >
-        <img [src]="photo.post.picture" class="aspect-square" />
+        <img
+          [src]="photo.post.picture"
+          class="aspect-square hover:opacity-80 hover:max-w-xs"
+        />
       </div>
     </div>
   </div>

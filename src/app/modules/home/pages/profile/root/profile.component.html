@@ -8,7 +8,7 @@
             [src]="profilepic"
             alt=""
             width="5em"
-            class="w-full h-full object-cover rounded-full border-2 border-black"
+            class="w-full h-full object-cover rounded-full"
             (click)="showUpolodtemp()"
           />
         </div>
@@ -26,14 +26,19 @@
     >
       <div class="grid grid-cols-4 mt-1 mr-auto ml-44">
         <div
-          (click)="changeTimeline()"
+          id="timeline"
+          #timeline
+          (click)="checkingParams(timeline.id)"
           routerLinkActive=" border-b-2 border-blue-500 text-slate-950"
+          [routerLinkActiveOptions]="{ exact: true }"
           class="mt-5 font-semibold text-lg text-gray-500 hover:text-black cursor-pointer hover:border-b-2 border-blue-500 mx-2 ml"
         >
           Timeline
         </div>
         <div
-          (click)="changeAbout()"
+          id="about"
+          #about
+          (click)="checkingParams(about.id)"
           routerLinkActive=" border-b-2 border-blue-500 text-slate-950"
           class="mt-5 font-semibold text-lg text-gray-500 hover:text-black cursor-pointer hover:border-b-2 border-blue-500 mx-2"
         >
@@ -42,13 +47,14 @@
         <div
           routerLink="friends"
           *ngIf="mainProfile"
-          routerLinkActive=" border-b-2 border-blue-500 text-slate-950"
           class="mt-5 font-semibold text-lg text-gray-500 hover:text-black cursor-pointer hover:border-b-2 border-blue-500 mx-2"
         >
           Friends
         </div>
         <div
-          (click)="changePhoto()"
+          id="photos"
+          #photo
+          (click)="checkingParams(photo.id)"
           routerLinkActive=" border-b-2 border-blue-500 text-slate-950"
           class="mt-5 font-semibold text-lg text-gray-500 hover:text-black cursor-pointer hover:border-b-2 border-blue-500 mx-2"
         >

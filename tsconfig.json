@@ -4,6 +4,20 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+
+"paths": {
+
+  "@profileservice/*": ["src/app/core/http/profile/*"],
+  "@posteservice/*": ["src/app/core/http/post/*"],
+  "@commentservice/*": ["src/app/core/http/comment/*"],
+  "@friendshipservice/*": ["src/app/core/http/friendship/*"],
+  "@sharedservice/*": ["src/app/shared/*"],
+  "@environment/*": ["src/enviroment/*"],
+  "@autservice/*": ["src/app/core/authentication/service/*"],
+
+},
+
+
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
