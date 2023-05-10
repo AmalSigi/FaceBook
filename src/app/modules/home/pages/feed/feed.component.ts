@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommentService } from 'src/app/core/http/comment/comment.service';
 import { FriendshipService } from 'src/app/core/http/friendship/friendship.service';
 import { PostService } from 'src/app/core/http/post/post.service';
+import { ProfileService } from 'src/app/core/http/profile/profile.service';
 import { environment } from 'src/enviroment/enviroment';
 
 @Component({
@@ -12,18 +13,30 @@ export class FeedComponent implements OnInit {
   users!: any[];
   totalPost: any[] = [];
   posts!: {};
+  public userDetailes: any = [];
   public showUpolod: boolean = false;
   public commentbox: boolean = false;
+  public profilePic: any;
   public commentboxId: any;
   constructor(
     private readonly frindship: FriendshipService,
     public readonly post: PostService,
-    private readonly comment: CommentService
+    private readonly comment: CommentService,
+    private readonly profile: ProfileService
   ) {}
 
   ngOnInit() {
     this.getFrindList();
+    this.getProfileDetailes();
   }
+
+  public getProfileDetailes(): void {
+    this.profile.getProfile().subscribe((repo: any) => {
+      this.userDetailes = repo;
+      this.userDetailes.picture = `${environment.url}/pictures/${repo.picture}`;
+    });
+  }
+
   public showUpolodtemp() {
     this.showUpolod = true;
   }
