@@ -7,7 +7,7 @@ import { ProfileService } from '@profileservice/profile.service';
   templateUrl: './edit-profile.component.html',
 })
 export class EditProfileComponent implements OnInit {
-  public data!: any;
+  public userDetailes: any = [];
   @Output() childEvent = new EventEmitter<boolean>();
   public editShowdiv: boolean = true;
 
@@ -24,9 +24,12 @@ export class EditProfileComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.profile.getProfileByUsername('amal').subscribe((repo: any) => {
+    this.getProfileDetailes();
+  }
+
+  public getProfileDetailes(): void {
+    this.profile.getProfile().subscribe((repo: any) => {
       this.editForm.setValue(repo);
-      console.log(this.data);
     });
   }
 
