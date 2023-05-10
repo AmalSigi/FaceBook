@@ -48,7 +48,7 @@ export class TimelineComponent implements OnInit {
     this.profile.getProfileByUsername(username).subscribe({
       next: (repo: any) => {
         this.userDetailes = repo;
-        this.userDetailes.picture = `${environment.url}/pictures/${repo.picture}`;
+        this.userDetailes.picture = this.addUrl(this.userDetailes.picture);
       },
     });
   }
@@ -56,8 +56,8 @@ export class TimelineComponent implements OnInit {
   public getProfileDetailes(): void {
     this.profile.getProfile().subscribe((repo: any) => {
       this.userDetailes = repo;
-      this.userDetailes.picture = `${environment.url}/pictures/${repo.picture}`;
-      this.profilePic = `${environment.url}/pictures/repo.picture`;
+      this.userDetailes.picture = this.addUrl(this.userDetailes.picture);
+      this.profilePic = this.addUrl(this.profilePic);
       console.log(this.profilePic);
       this.username = repo.username;
       this.getPostItems(this.username);
@@ -66,7 +66,7 @@ export class TimelineComponent implements OnInit {
 
   public getProfilePic() {
     this.profile.getProfile().subscribe((repo: any) => {
-      this.profilePic = `${environment.url}/pictures/` + repo.picture;
+      this.profilePic = this.addUrl(repo.picture);
     });
   }
 
@@ -75,9 +75,9 @@ export class TimelineComponent implements OnInit {
       this.postDetailes = respo;
       console.log(respo);
       this.postDetailes.forEach((item: any) => {
-        item.post.picture = `${environment.url}/pictures/` + item.post.picture;
+        item.post.picture = this.addUrl(item.post.picture);
         for (let comment of item.comments) {
-          comment.picture = `${environment.url}/pictures/` + comment.picture;
+          comment.picture = this.addUrl(comment.picture);
           comment.created_at = this.getTime(comment.created_at);
           console.log();
         }
