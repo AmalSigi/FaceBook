@@ -10,27 +10,32 @@ import { environment } from 'src/enviroment/enviroment';
 export class FriendRequestComponent implements OnInit {
   request!: any[];
   user!: any[];
+  friend!: any[];
   constructor(private readonly frindship: FriendshipService) {}
   ngOnInit(): void {
     this.requestList();
     this.getUsersList();
   }
 
-  public requestList() {
+  public requestList(): void {
     this.frindship.getReq().subscribe((repo: any) => {
       this.request = repo;
+
+      this.request.forEach((item: any) => {
+        item.sender.picture = `${environment.url}/pictures/${item.sender.picture}`;
+      });
     });
   }
 
-  public getUsersList() {
+  public getUsersList(): void {
     this.frindship.getUsers().subscribe({
       next: (respo: any) => {
         console.log(respo);
         this.user = respo;
+
         this.user.forEach((item: any) => {
           item.picture = `${environment.url}/pictures/${item.picture}`;
         });
-        console.log(this.user);
       },
     });
   }

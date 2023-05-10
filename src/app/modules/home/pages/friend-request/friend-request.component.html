@@ -36,32 +36,39 @@
       </h2> -->
     </div>
 
-    <div *ngFor="let req of request" class="-2 p-2 px-5 hover:bg-slate-100">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center">
-          <div class="w-16 h-16 rounded overflow-hidden mr-3">
-            <img
-              [src]="req.profile_pic"
-              alt=""
-              class="w-full h-full object-cover"
-            />
+    <div *ngFor="let req of request">
+      <div
+        *ngIf="req.status == 'pending'"
+        class="-2 p-2 px-5 hover:bg-slate-100"
+      >
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <div class="w-16 h-16 rounded overflow-hidden mr-3">
+              <img
+                [src]="req.sender.picture"
+                alt=""
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <p class="text-lg font-medium mt-2">
+                {{ req.sender.first_name }} {{ req.sender.last_name }}
+              </p>
+            </div>
           </div>
-          <div>
-            <p class="text-lg font-medium mt-2">{{ req.name }}</p>
+          <div class="grid grid-cols-2 gap-1">
+            <button
+              class="bg-blue-500 text-sm text-slate-50 font-semibold rounded hover:bg-blue-600"
+              (click)="accpet(req.sender.username)"
+            >
+              Confirm
+            </button>
+            <button
+              class="px-3 p-1 text-sm font-semibold rounded border-2 border-gray-500"
+            >
+              Delete Request
+            </button>
           </div>
-        </div>
-        <div class="grid grid-cols-2 gap-1">
-          <button
-            class="bg-blue-500 text-sm text-slate-50 font-semibold rounded hover:bg-blue-600"
-            (click)="accpet(req.username)"
-          >
-            Confirm
-          </button>
-          <button
-            class="px-3 p-1 text-sm font-semibold rounded border-2 border-gray-500"
-          >
-            Delete Request
-          </button>
         </div>
       </div>
     </div>
@@ -98,8 +105,11 @@
       </div> -->
     </div>
 
-    <div *ngFor="let req of user" class="-2 p-2 px-5 hover:bg-slate-100">
-      <div class="flex justify-between items-center">
+    <div *ngFor="let req of user">
+      <div
+        *ngIf="!req.friendship"
+        class="flex justify-between items-center -2 p-2 px-5 hover:bg-slate-100"
+      >
         <div class="flex items-center">
           <div class="w-16 h-16 rounded overflow-hidden mr-3">
             <img

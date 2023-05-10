@@ -34,7 +34,6 @@ export class FriendsComponent {
   public grtFrindList() {
     this.frindship.getFriend().subscribe({
       next: (respo: any) => {
-        console.log(respo);
         this.users = respo;
         this.users.forEach((item: any) => {
           item.picture = `${environment.url}/pictures/${item.picture}`;

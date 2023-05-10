@@ -30,84 +30,88 @@
 </div>
 
 <h2 class="font-bold text-xl mb-4">Post</h2>
-<div *ngFor="let item of users" class="bg-white p-5 rounded mb-2">
-  <div class="flex items-center justify-between">
-    <div class="flex">
-      <div class="w-11 h-11 rounded-full overflow-hidden mr-3">
-        <img
-          [src]="item.profile_pic"
-          alt=""
-          class="w-full h-full object-cover"
-        />
-      </div>
+<div *ngFor="let item of totalPost">
+  <div *ngFor="let post of item.post">
+    <div class="bg-white p-5 rounded m-5">
+      <div class="flex items-center justify-between m-5">
+        <div class="flex">
+          <div class="w-11 h-11 rounded-full overflow-hidden mr-3">
+            <img
+              [src]="item.friend.picture"
+              alt=""
+              class="w-full h-full object-cover"
+            />
+          </div>
 
+          <div>
+            <p class="text-lg font-medium">
+              {{ item.friend.first_name }}{{ item.friend.last_name }}
+            </p>
+            <p class="text-xs text-gray-400">{{ post.post.created_at }}</p>
+          </div>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="23"
+          height="23"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#4a90e2"
+          stroke-width="2"
+          stroke-linecap="butt"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="1"></circle>
+          <circle cx="19" cy="12" r="1"></circle>
+          <circle cx="5" cy="12" r="1"></circle>
+        </svg>
+      </div>
+      <div class="py-3">
+        <img [src]="post.post.picture" class="mx-auto" />
+      </div>
       <div>
-        <p class="text-lg font-medium">{{ item.name }}</p>
-        <p class="text-xs text-gray-400">11 min ago</p>
+        <p>
+          {{ post.post.content }}
+        </p>
+      </div>
+      <div class="mt-5 flex items-center">
+        <button class="flex items-center mr-5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="23"
+            height="23"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#4a90e2"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"
+            ></path>
+          </svg>
+          <span class="ml-1">Like</span>
+        </button>
+        <button class="flex items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="23"
+            height="23"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#4a90e2"
+            stroke-width="2"
+            stroke-linecap="butt"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+            ></path>
+          </svg>
+          <span>Comment</span>
+        </button>
       </div>
     </div>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="23"
-      height="23"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#4a90e2"
-      stroke-width="2"
-      stroke-linecap="butt"
-      stroke-linejoin="round"
-    >
-      <circle cx="12" cy="12" r="1"></circle>
-      <circle cx="19" cy="12" r="1"></circle>
-      <circle cx="5" cy="12" r="1"></circle>
-    </svg>
-  </div>
-  <div class="py-3">
-    <img [src]="item.posts[0].post_link" alt="" />
-  </div>
-  <div>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit
-      alias tenetur molestias laborum odit perspiciatis quibusdam expedita
-      repellat similique fuga.
-    </p>
-  </div>
-  <div class="mt-5 flex items-center">
-    <button class="flex items-center mr-5">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="23"
-        height="23"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#4a90e2"
-        stroke-width="2"
-        stroke-linecap="butt"
-        stroke-linejoin="round"
-      >
-        <path
-          d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"
-        ></path>
-      </svg>
-      <span class="ml-1">Like</span>
-    </button>
-    <button class="flex items-center">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="23"
-        height="23"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#4a90e2"
-        stroke-width="2"
-        stroke-linecap="butt"
-        stroke-linejoin="round"
-      >
-        <path
-          d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-        ></path>
-      </svg>
-      <span>Comment</span>
-    </button>
   </div>
 </div>

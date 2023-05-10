@@ -43,7 +43,9 @@ export class ProfileComponent implements OnInit {
   }
 
   public showUpolodtemp() {
-    this.showUpolod = true;
+    if (this.mainProfile) {
+      this.showUpolod = true;
+    }
   }
   public unshowUpolodtemp(value: boolean) {
     this.showUpolod = false;
