@@ -71,9 +71,8 @@ export class FeedComponent implements OnInit {
         }
         console.log(post);
         this.posts = { friend, post };
-        // console.log(this.posts);
+
         this.totalPost.push(this.posts);
-        // console.log(this.totalPost);
       },
     });
   }

@@ -44,14 +44,6 @@ export class TimelineComponent implements OnInit {
     );
   }
 
-  // public getProfileDetailes() {
-  //   this.activatedRoute.params.subscribe((params) => {
-  //     console.log(params);
-  //     // this.username = params['username'];
-  //     console.log(this.username);
-  //   });
-  // }
-
   public friendProfile(username: any) {
     this.profile.getProfileByUsername(username).subscribe({
       next: (repo: any) => {
