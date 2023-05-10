@@ -86,7 +86,7 @@ export class TimelineComponent implements OnInit {
         item.post.picture = `${environment.url}/pictures/` + item.post.picture;
         for (let comment of item.comments) {
           comment.picture = `${environment.url}/pictures/` + comment.picture;
-          comment.created_at = this.grtTime(comment.created_at);
+          comment.created_at = this.getTime(comment.created_at);
           console.log();
         }
       });
@@ -113,7 +113,7 @@ export class TimelineComponent implements OnInit {
     }
   }
 
-  public grtTime(time: any) {
+  public getTime(time: any) {
     const now: any = new Date();
     const earlierTime: any = new Date(time);
     const timeDiff = now - earlierTime;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CommentService } from 'src/app/core/http/comment/comment.service';
 import { FriendshipService } from 'src/app/core/http/friendship/friendship.service';
 import { PostService } from 'src/app/core/http/post/post.service';
-import { UsersService } from 'src/app/shared/users.service';
 import { environment } from 'src/enviroment/enviroment';
 
 @Component({
@@ -13,9 +13,12 @@ export class FeedComponent implements OnInit {
   totalPost: any[] = [];
   posts!: {};
   public showUpolod: boolean = false;
+  public commentbox: boolean = false;
+  public commentboxId: any;
   constructor(
     private readonly frindship: FriendshipService,
-    public readonly post: PostService
+    public readonly post: PostService,
+    private readonly comment: CommentService
   ) {}
 
   ngOnInit() {
@@ -31,8 +34,6 @@ export class FeedComponent implements OnInit {
   public getFrindList() {
     this.frindship.getFriend().subscribe({
       next: (respo: any) => {
-        // console.log(respo);
-
         this.users = respo;
         this.users.forEach((item: any) => {
           item.picture = `${environment.url}/pictures/${item.picture}`;
@@ -45,11 +46,15 @@ export class FeedComponent implements OnInit {
   public getPost(username: any, friend: any) {
     this.post.getPost(username).subscribe({
       next: (post: any) => {
-        // console.log(post);
-
+        console.log(post);
         for (let item of post) {
           item.post.picture = `${environment.url}/pictures/${item.post.picture}`;
           item.post.created_at = this.getTime(item.post.created_at);
+          for (let comment of item.comments) {
+            comment.picture = `${environment.url}/pictures/` + comment.picture;
+            comment.created_at = this.getTime(comment.created_at);
+            console.log();
+          }
         }
         console.log(post);
         this.posts = { friend, post };
@@ -82,5 +87,25 @@ export class FeedComponent implements OnInit {
     }
 
     return result;
+  }
+
+  public commentActive(id: any) {
+    this.commentboxId = id;
+    this.commentbox = !this.commentbox;
+  }
+
+  public commentSend(post_id: number, content: string) {
+    const body = {
+      post_id,
+      content,
+    };
+    if (content) {
+      this.comment.postComments(body).subscribe({
+        next: () => {
+          console.log('true');
+          this.getFrindList();
+        },
+      });
+    }
   }
 }
