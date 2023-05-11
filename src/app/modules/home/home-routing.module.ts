@@ -8,6 +8,7 @@ import { AboutComponent } from './pages/profile/component/about/about.component'
 import { FriendsListComponent } from './pages/profile/component/friends-list/friends-list.component';
 import { PhotosComponent } from './pages/profile/component/photos/photos.component';
 import { TimelineComponent } from './pages/profile/component/timeline/timeline.component';
+import { ActivateGuard } from 'src/app/core/authentication/guard/activate.guard';
 
 const routes: Routes = [
   {
@@ -23,8 +24,9 @@ const routes: Routes = [
         component: FeedComponent,
       },
       {
-        path: 'profile',
+        path: '',
         component: ProfileComponent,
+
         children: [
           {
             path: '',
@@ -54,35 +56,36 @@ const routes: Routes = [
         path: 'fried_req',
         component: FriendRequestComponent,
       },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-        children: [
-          {
-            path: '',
-            redirectTo: 'timeline/:username',
-            pathMatch: 'full',
-          },
+      // {
+      //   path: 'profile',
+      //   component: ProfileComponent,
+      //   children: [
+      //     {
+      //       path: '',
+      //       redirectTo: 'timeline/:username',
+      //       pathMatch: 'full',
+      //     },
 
-          {
-            path: 'timeline/:username',
-            component: TimelineComponent,
-          },
-          {
-            path: 'about/:username',
-            component: AboutComponent,
-          },
-          {
-            path: 'friends/:username',
-            component: FriendsListComponent,
-          },
-          {
-            path: 'photos/:username',
-            component: PhotosComponent,
-          },
-        ],
-      },
+      //     {
+      //       path: 'timeline/:username',
+      //       component: TimelineComponent,
+      //     },
+      //     {
+      //       path: 'about/:username',
+      //       component: AboutComponent,
+      //     },
+      //     {
+      //       path: 'friends/:username',
+      //       component: FriendsListComponent,
+      //     },
+      //     {
+      //       path: 'photos/:username',
+      //       component: PhotosComponent,
+      //     },
+      //   ],
+      // },
     ],
+    canActivateChild: [ActivateGuard],
   },
 ];
 

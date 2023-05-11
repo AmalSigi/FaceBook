@@ -23,8 +23,8 @@ export class ProfileComponent implements OnInit {
   public profilepic!: any;
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(
-      (params: { [source: string]: string }) => {
-        this.username = params['source'];
+      (params: { [username: string]: string }) => {
+        this.username = params['username'];
         if (this.username) {
           this.friendProfile(this.username);
           this.mainProfile = false;
@@ -72,16 +72,15 @@ export class ProfileComponent implements OnInit {
   }
 
   public checkingParams(nav: any) {
-    console.log(nav);
     this.activatedRoute.queryParams.subscribe(
-      (params: { [source: string]: string }) => {
-        this.username = params['source'];
+      (params: { [username: string]: string }) => {
+        this.username = params['username'];
         if (this.username) {
-          this.router.navigate([`/home/profile/${nav}/${this.username}`], {
-            queryParams: { source: `${this.username}` },
+          this.router.navigate([`/${nav}`], {
+            queryParams: { username: `${this.username}` },
           });
         } else {
-          this.router.navigate([`/home/profile/${nav}`]);
+          this.router.navigate([`/${nav}`]);
         }
       }
     );

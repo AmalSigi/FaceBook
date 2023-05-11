@@ -29,8 +29,8 @@ export class TimelineComponent implements OnInit {
   }
 
   private main() {
-    this.activatedRoute.params.subscribe(
-      (params: { [source: string]: string }) => {
+    this.activatedRoute.queryParams.subscribe(
+      (params: { [username: string]: string }) => {
         this.username = params['username'];
         if (this.username) {
           this.friendProfile(this.username);

@@ -21,8 +21,8 @@ export class PhotosComponent {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      (params: { [source: string]: string }) => {
+    this.activatedRoute.queryParams.subscribe(
+      (params: { [username: string]: string }) => {
         this.username = params['username'];
         if (this.username) {
           this.getPostItems(this.username);

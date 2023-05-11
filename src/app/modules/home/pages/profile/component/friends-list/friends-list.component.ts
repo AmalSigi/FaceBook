@@ -38,8 +38,8 @@ export class FriendsListComponent implements OnInit {
   }
 
   public friendProfile(username: any) {
-    this.router.navigate([`/home/profile/timeline/${username}`], {
-      queryParams: { source: `${username}` },
+    this.router.navigate([`/timeline/`], {
+      queryParams: { username: `${username}` },
     });
   }
 }

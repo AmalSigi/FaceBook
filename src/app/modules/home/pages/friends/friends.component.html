@@ -2,7 +2,7 @@
   <div class="flex items-center">
     <div
       class="w-14 h-14 rounded-full overflow-hidden mr-3"
-      routerLink="/home/profile"
+      routerLink="timeline"
     >
       <img [src]="profilepic" alt="" class="w-full h-full object-cover" />
     </div>
@@ -13,7 +13,7 @@
       </p>
     </div>
   </div>
-  <button routerLink="/home/profile" title="Profile">
+  <button routerLink="timeline" title="Profile">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="23"
@@ -51,33 +51,19 @@
 </div>
 
 <div *ngFor="let item of users">
-  <div class="flex hover:bg-gray-200 justify-between items-center p-2 px-5">
-    <div class="flex">
-      <div class="w-9 h-9 rounded-full overflow-hidden mr-3">
-        <img [src]="item.picture" alt="" class="w-full h-full object-cover" />
+  <a routerLink="/timeline" [queryParams]="{ username: item.username }">
+    <div class="flex hover:bg-gray-200 justify-between items-center p-2 px-5">
+      <div class="flex">
+        <div class="w-9 h-9 rounded-full overflow-hidden mr-3">
+          <img [src]="item.picture" alt="" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <p class="text-xs font-medium mt-2">
+            {{ item.first_name }} {{ item.last_name }}
+          </p>
+        </div>
       </div>
-      <div>
-        <p class="text-xs font-medium mt-2">
-          {{ item.first_name }} {{ item.last_name }}
-        </p>
-      </div>
-    </div>
-    <div *ngIf="true; else offline" class="text-green-600">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        stroke-width="4"
-        stroke-linecap="round"
-        stroke-linejoin="arcs"
-      >
-        <circle cx="12" cy="12" r="10"></circle>
-      </svg>
-    </div>
-    <ng-template #offline>
-      <div class="text-red-500">
+      <div *ngIf="true; else offline" class="text-green-600">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -91,8 +77,24 @@
           <circle cx="12" cy="12" r="10"></circle>
         </svg>
       </div>
-    </ng-template>
-  </div>
+      <ng-template #offline>
+        <div class="text-red-500">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="arcs"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+        </div>
+      </ng-template>
+    </div>
+  </a>
 </div>
 
 <footer class="mt-auto px-2">
