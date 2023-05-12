@@ -11,6 +11,8 @@ import { FriendshipService } from '@friendshipservice/friendship.service';
 })
 export class FeedComponent implements OnInit {
   users!: any[];
+  postComb: any[] = [];
+
   totalPost: any[] = [];
   posts!: {};
   public userDetailes: any = [];
@@ -34,6 +36,7 @@ export class FeedComponent implements OnInit {
     this.profile.getProfile().subscribe((repo: any) => {
       this.userDetailes = repo;
       this.userDetailes.picture = this.addUrl(repo.picture);
+      console.log('wrks at getpro 1');
     });
   }
 
@@ -77,9 +80,11 @@ export class FeedComponent implements OnInit {
           }
         }
         this.posts = { friend, post };
-        this.totalPost.push(this.posts);
+        this.postComb.push(this.posts);
+        this.totalPost = this.postComb;
       },
     });
+    this.postComb = [];
   }
 
   public addUrl(imgName: any) {

@@ -43,6 +43,7 @@ export class FriendRequestComponent implements OnInit {
     this.frindship.acceptReq(username).subscribe({
       next: () => {
         this.requestList();
+        this.getUsersList();
       },
       error: () => {},
       complete: () => {},

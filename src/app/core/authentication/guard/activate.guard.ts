@@ -20,7 +20,6 @@ export class ActivateGuard implements CanActivate, CanActivateChild {
   ) {}
 
   public getActive() {
-    console.log(this.auth.activate());
     this.auth.activate().subscribe((repo: any) => {
       if (repo == false) {
         this.router.navigate(['login']);
@@ -31,12 +30,9 @@ export class ActivateGuard implements CanActivate, CanActivateChild {
     });
   }
 
-  canActivate(): any {
-    console.log('its working 1');
-  }
+  canActivate(): any {}
 
   canActivateChild(): any {
     this.getActive();
-    console.log('its working 2');
   }
 }
