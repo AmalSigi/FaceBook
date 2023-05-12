@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProfileService } from '@profileservice/profile.service';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { environment } from 'src/enviroment/enviroment';
 @Injectable({
   providedIn: 'root',
@@ -22,17 +22,23 @@ export class AuthService {
     return this.http.post(`${environment.url}/auth/register`, data);
   }
 
-  public activate(): boolean {
+  public activate(): Observable<boolean> {
     const access_token = localStorage.getItem('access_token');
-
     if (access_token) {
-      if (this.profile.getProfile()) {
-        return true;
-      } else {
-        return false;
-      }
+      return this.profile.getProfile().pipe(
+        map((respo: any) => {
+          if (respo) {
+            return true;
+          } else {
+            return false;
+          }
+        }),
+        catchError((erroe: any) => {
+          return of(false);
+        })
+      );
     } else {
-      return false;
+      return of(false);
     }
   }
 }

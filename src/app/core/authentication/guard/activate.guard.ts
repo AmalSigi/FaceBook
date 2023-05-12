@@ -21,12 +21,14 @@ export class ActivateGuard implements CanActivate, CanActivateChild {
 
   public getActive() {
     console.log(this.auth.activate());
-    if (this.auth.activate() == false) {
-      this.router.navigate(['login']);
-      return false;
-    } else {
-      return true;
-    }
+    this.auth.activate().subscribe((repo: any) => {
+      if (repo == false) {
+        this.router.navigate(['login']);
+        return false;
+      } else {
+        return true;
+      }
+    });
   }
 
   canActivate(): any {
