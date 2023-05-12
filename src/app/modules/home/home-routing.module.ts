@@ -29,15 +29,15 @@ const routes: Routes = [
 
         children: [
           {
+            path: 'timeline',
+            component: TimelineComponent,
+          },
+          {
             path: '',
             redirectTo: 'timeline',
             pathMatch: 'full',
           },
 
-          {
-            path: 'timeline',
-            component: TimelineComponent,
-          },
           {
             path: 'about',
             component: AboutComponent,
@@ -62,12 +62,12 @@ const routes: Routes = [
       //   children: [
       //     {
       //       path: '',
-      //       redirectTo: 'timeline/:username',
+      //       redirectTo: 'timeline',
       //       pathMatch: 'full',
       //     },
 
       //     {
-      //       path: 'timeline/:username',
+      //       path: 'timeline',
       //       component: TimelineComponent,
       //     },
       //     {

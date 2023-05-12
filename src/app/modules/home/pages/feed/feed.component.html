@@ -113,6 +113,12 @@
               </p>
             </div>
           </div>
+          <div *ngIf="post.comments == 0" class="text-center mt-28">
+            <h1 class="text-2xl text-gray-900/50 font-bold">
+              No comments to display
+            </h1>
+            <h3 class="text-black/50">You can be the first one</h3>
+          </div>
         </div>
 
         <div class="mt-5 flex items-center">
