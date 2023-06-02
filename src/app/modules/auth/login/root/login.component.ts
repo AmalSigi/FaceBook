@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { AuthService } from '@autservice/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DarkModeService } from '@autservice/dark-mode.service';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
   constructor(
     private readonly router: Router,
-    private readonly auth: AuthService
+    private readonly auth: AuthService,
+    private readonly mode: DarkModeService
   ) {}
-
+  public darkModeLoc = localStorage.getItem('dark_mode');
   public loginForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -33,5 +35,11 @@ export class LoginComponent {
         this.router.navigate(['']);
       }
     });
+  }
+
+  public changeMode(): void {
+    if (this.darkModeLoc != 'null') {
+      this.mode.toogleCurrentDarkMidea();
+    }
   }
 }

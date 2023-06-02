@@ -1,7 +1,7 @@
-<section class="mt-10 bg-gray-100/50 p-1 -m-5">
+<section class="mt-10 bg-gray-100/50 dark:bg-black p-1 -m-5">
   <h1 class="text-3xl font-semibold px-3">TimeLine</h1>
   <div *ngFor="let photo of postDetailes" class="">
-    <div class="bg-white m-5 rounded p-5 mb-5 shadow-2xl shadow-gray-950">
+    <div class="bg-white dark:bg-black m-5 rounded p-5 mb-5 shadow-2xl shadow-gray-950 dark:shadow-gray-50 dark:shadow-md">
       <div class="flex items-center justify-between">
         <div class="flex">
           <div class="w-11 h-11 rounded-full overflow-hidden mr-3">
@@ -13,7 +13,7 @@
           </div>
 
           <div>
-            <p class="text-lg font-medium">
+            <p class="text-lg font-medium dark:text-gray-400">
               {{ userDetailes.first_name }} {{ userDetailes.last_name }}
             </p>
             <p class="text-xs text-gray-400">
@@ -109,7 +109,7 @@
               d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"
             ></path>
           </svg>
-          <span class="ml-1">Like</span>
+          <span class="ml-1 dark:text-gray-400">Like</span>
         </button>
         <button
           [id]="photo.post.id"
@@ -132,7 +132,7 @@
               d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
             ></path>
           </svg>
-          <span>Comments</span>
+          <span class="dark:text-gray-400">Comments</span>
         </button>
 
         <button class="flex items-center">
@@ -153,7 +153,7 @@
             <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
             <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
           </svg>
-          <span>Share</span>
+          <span class="dark:text-gray-400">Share</span>
         </button>
       </div>
       <div

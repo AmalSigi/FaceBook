@@ -16,7 +16,7 @@ export class FriendsComponent {
   constructor(
     private readonly data: UsersService,
     private readonly frindship: FriendshipService,
-    private readonly route: Router,
+    
     private readonly profile: ProfileService
   ) {}
 
@@ -53,8 +53,5 @@ export class FriendsComponent {
     });
   }
 
-  public logOut() {
-    localStorage.setItem('access_token', '');
-    this.route.navigate(['/login']);
-  }
+
 }

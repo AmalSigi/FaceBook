@@ -8,7 +8,7 @@
     </div>
 
     <div>
-      <p class="text-lg font-medium">
+      <p class="text-lg font-medium dark:text-gray-100">
         {{ profileDetailes?.first_name }} {{ profileDetailes?.last_name }}
       </p>
     </div>
@@ -52,13 +52,13 @@
 
 <div *ngFor="let item of users">
   <a routerLink="/timeline" [queryParams]="{ username: item.username }">
-    <div class="flex hover:bg-gray-200 justify-between items-center p-2 px-5">
+    <div class="flex hover:bg-gray-200 dark:hover:bg-gray-600 justify-between items-center p-2 px-5">
       <div class="flex">
         <div class="w-9 h-9 rounded-full overflow-hidden mr-3">
           <img [src]="item.picture" alt="" class="w-full h-full object-cover" />
         </div>
         <div>
-          <p class="text-xs font-medium mt-2">
+          <p class="text-xs font-medium mt-2 dark:text-gray-400">
             {{ item.first_name }} {{ item.last_name }}
           </p>
         </div>
@@ -98,29 +98,5 @@
 </div>
 
 <footer class="mt-auto px-2">
-  <div>
-    <ul class="p-5">
-      <li
-        class="flex mb-3 text-red-500 hover:text-red-600 items-center"
-        (click)="logOut()"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#d0021b"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          stroke-linejoin="arcs"
-        >
-          <path
-            d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9"
-          />
-        </svg>
-        <span class="ml-2 cursor-pointer">Log out</span>
-      </li>
-    </ul>
-  </div>
+
 </footer>

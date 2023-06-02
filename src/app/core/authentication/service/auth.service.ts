@@ -26,14 +26,14 @@ export class AuthService {
     const access_token = localStorage.getItem('access_token');
     if (access_token) {
       return this.profile.getProfile().pipe(
-        map((respo: any) => {
-          if (respo) {
+        map((resp: any) => {
+          if (resp) {
             return true;
           } else {
             return false;
           }
         }),
-        catchError((erroe: any) => {
+        catchError((error: any) => {
           return of(false);
         })
       );
