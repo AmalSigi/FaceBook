@@ -10,7 +10,7 @@ import { DarkModeService } from '@autservice/dark-mode.service';
 })
 export class LoginComponent {
   constructor(
-    private readonly router: Router,
+    private readonly routers: Router,
     private readonly auth: AuthService,
     private readonly mode: DarkModeService
   ) {}
@@ -32,7 +32,7 @@ export class LoginComponent {
           JSON.stringify(response.access_token)
         );
 
-        this.router.navigate(['']);
+        this.routers.navigate(['']);
       }
     });
   }
