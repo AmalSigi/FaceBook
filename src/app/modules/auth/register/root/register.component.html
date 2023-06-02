@@ -2,11 +2,15 @@
   class="bg-white/80 overflow-y-scroll fixed top-0 bottom-0 left-0 right-0 h-screen p-5"
 >
   <div class="">
-    <div class="bg-white rounded-lg shadow-xl w-[28em] mx-auto my-auto mt-[2%]">
+    <div
+      class="bg-white rounded-lg shadow-xl md:w-[28em] w-80 mx-auto my-auto mt-[2%]"
+    >
       <div class="flex item-center justify-between px-5 py-3 border-b-[1px]">
         <div>
-          <h1 class="font-bold text-3xl font">Sign Up</h1>
-          <p class="font-light text-zinc-700">It's quick and easy.</p>
+          <h1 class="font-bold md:text-3xl text-2xl font">Sign Up</h1>
+          <p class="font-light text-zinc-700 text-sm md:text-lg">
+            It's quick and easy.
+          </p>
         </div>
         <button routerLink="/login">
           <svg
@@ -27,8 +31,8 @@
       </div>
 
       <form [formGroup]="registerForm" class="bg-white p-4 rounded-lg w-full">
-        <div class="grid grid-cols-2 gap-2 mb-2 w-full">
-          <div class="flex items-center relative">
+        <div class="md:grid md:grid-cols-2 gap-2 mb-2 w-full">
+          <div class="md:flex grid grid-cols-1 mb-2 items-center relative">
             <input
               formControlName="first_name"
               type="text"
@@ -38,7 +42,6 @@
                 'border-red-400 ':registerForm.controls['first_name'].errors?.['required']&&registerForm.controls['first_name'].touched
               }"
             />
-
             <svg
               *ngIf="registerForm.controls['first_name'].errors?.['required']&&registerForm.controls['first_name'].touched"
               fill="currentColor"
@@ -58,7 +61,7 @@
               <line x1="12" y1="17" x2="12.01" y2="17"></line>
             </svg>
           </div>
-          <div class="flex items-center relative">
+          <div class="md:flex grid grid-cols-1 mb-2 items-center relative">
             <input
               formControlName="last_name"
               type="text"
