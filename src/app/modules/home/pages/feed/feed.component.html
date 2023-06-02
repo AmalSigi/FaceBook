@@ -1,5 +1,5 @@
-<div class="bg-gray-100/5 p-1">
-  <div class="bg-white mb-6 rounded-2xl p-4">
+<div class="bg-gray-100/5 dark:bg-neutral-800 p-1">
+  <div class="bg-white mb-6 rounded-2xl p-4 mx-2">
     <p class="font-semibold">
       What's in your mind? {{ userDetailes.first_name }}
     </p>
@@ -32,13 +32,17 @@
     ></app-add-post>
   </div>
 
-  <h2 class="font-bold text-xl mb-4 dark:text-gray-50">Post</h2>
+  <h2 class="font-bold text-xl mb-4 dark:text-gray-50 pl-1">Post</h2>
   <div *ngFor="let item of totalPost">
     <div *ngFor="let post of item.post">
-      <div class="bg-white dark:bg-black p-5 rounded mb-5 shadow-2xl shadow-gray-500">
+      <div
+        class="bg-white dark:bg-black p-5 rounded mb-5 shadow-2xl shadow-gray-900"
+      >
         <div class="flex items-center justify-between m-5">
           <div class="flex">
-            <div class="w-11 h-11 rounded-full overflow-hidden mr-3">
+            <div
+              class="md:w-11 md:h-11 w-9 h-9 rounded-full overflow-hidden mr-3"
+            >
               <img
                 [src]="item.friend.picture"
                 alt=""
@@ -47,10 +51,12 @@
             </div>
 
             <div>
-              <p class="text-lg font-medium dark:text-gray-300">
+              <p class="md:text-lg font-medium dark:text-gray-300">
                 {{ item.friend.first_name }}{{ item.friend.last_name }}
               </p>
-              <p class="text-xs text-gray-400">{{ post.post.created_at }}</p>
+              <p class="text-[10px] md:text-xs text-gray-400">
+                {{ post.post.created_at }}
+              </p>
             </div>
           </div>
           <svg
@@ -82,7 +88,7 @@
           *ngIf="commentOpen.id == commentboxId && commentbox"
           [id]="post.post.id"
           #commentOpen
-          class="w-full m-2 h-96 overflow-y-scroll bg-blue-500/20 rounded-xl"
+          class="md:w-full m-2 md:h-96 h-60 overflow-y-scroll bg-blue-500/20 dark:bg-neutral-800 rounded-xl"
         >
           <div
             *ngFor="let com of post.comments; let i = index"
@@ -113,11 +119,15 @@
               </p>
             </div>
           </div>
-          <div *ngIf="post.comments == 0" class="text-center mt-28">
-            <h1 class="text-2xl text-gray-900/50 font-bold">
+          <div *ngIf="post.comments == 0" class="text-center md:mt-28 mt-10">
+            <h1
+              class="md:text-2xl text-lg text-gray-900/50 dark:text-gray-100 font-bold"
+            >
               No comments to display
             </h1>
-            <h3 class="text-black/50">You can be the first one</h3>
+            <h3 class="text-black/50 dark:text-neutral-100">
+              You can be the first one
+            </h3>
           </div>
         </div>
 
