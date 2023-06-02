@@ -1,17 +1,19 @@
 <div>
   <div class="bg-gray-100 dark:bg-black">
     <!-- <button class="p-3 bg-yellow-500" (click)="changeMode()">dark mode</button> -->
-    <section class="flex items-center justify-center h-screen">
-      <div class="hidden md:block mr-[5%]">
-        <h1 class="text-blue-500 text-6xl font-bold">facebook</h1>
-        <p class="text-gray-900 dark:text-gray-200 font-semibold text-xl">
+    <section
+      class="md:flex md:items-center text-center md:justify-center h-screen mt-5"
+    >
+      <div class="mr-[5%]">
+        <h1 class="text-blue-500 md:text-6xl text-4xl font-bold">facebook</h1>
+        <p class="text-gray-900 dark:text-gray-200 font-semibold md:text-xl">
           Facebook helps you connect and share <br />
           with the people in your life.
         </p>
       </div>
       <div>
         <div
-          class="shadow-lg text-center w-96 p-4 bg-white dark:bg-black dark:shadow-gray-500 rounded-md"
+          class="shadow-lg text-center mx-auto md:w-96 w-80 p-4 bg-white dark:bg-black dark:shadow-gray-500 rounded-md mt-5"
         >
           <form
             [formGroup]="loginForm"
