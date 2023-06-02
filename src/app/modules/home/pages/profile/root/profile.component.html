@@ -14,7 +14,7 @@
         </div>
 
         <div class="grid grid-rows-1 mx-5">
-          <p class="text-4xl text-white font-medium">
+          <p class="mdtext-4xl text-white font-medium">
             {{ profileDetailes?.first_name }}
             {{ profileDetailes?.last_name }}
           </p>
@@ -24,13 +24,13 @@
     <div
       class="flex justify-between shadow absolute bottom-0 w-full border-2 dark:border-neutral-700 bg-white dark:bg-black -mb-2 min-w-min"
     >
-      <div class="grid grid-cols-4 mt-1 mr-auto ml-44 ">
+      <div class="grid grid-cols-4 mt-1 mr-auto ml-44">
         <a
           id="timeline"
           #timeline
           (click)="checkingParams(timeline.id)"
           routerLinkActive=" border-b-2 border-blue-500 text-slate-950 "
-          class="mt-5 font-semibold text-lg text-gray-500 dark:text-slate-200 hover:text-black dark:hover:text-gray-500 cursor-pointer hover:border-b-2 border-blue-500 mx-2 ml"
+          class="mt-5 font-semibold md:text-lg text-gray-500 dark:text-slate-200 hover:text-black dark:hover:text-gray-500 cursor-pointer hover:border-b-2 border-blue-500 mx-2 ml"
         >
           Timeline
         </a>
@@ -39,14 +39,14 @@
           #about
           (click)="checkingParams(about.id)"
           routerLinkActive=" border-b-2 border-blue-500 text-slate-950"
-          class="mt-5 font-semibold text-lg text-gray-500 dark:text-slate-200 hover:text-black dark:hover:text-gray-500 cursor-pointer hover:border-b-2 border-blue-500 mx-2"
+          class="mt-5 font-semibold md:text-lg text-gray-500 dark:text-slate-200 hover:text-black dark:hover:text-gray-500 cursor-pointer hover:border-b-2 border-blue-500 mx-2"
         >
           About
         </a>
         <a
           routerLink="friends"
           *ngIf="mainProfile"
-          class="mt-5 font-semibold text-lg text-gray-500 dark:text-slate-200 hover:text-black dark:hover:text-gray-500 cursor-pointer hover:border-b-2 border-blue-500 mx-2"
+          class="mt-5 font-semibold md:text-lg text-gray-500 dark:text-slate-200 hover:text-black dark:hover:text-gray-500 cursor-pointer hover:border-b-2 border-blue-500 mx-2"
         >
           Friends
         </a>
@@ -55,7 +55,7 @@
           #photo
           (click)="checkingParams(photo.id)"
           routerLinkActive=" border-b-2 border-blue-500 text-slate-950"
-          class="mt-5 font-semibold text-lg text-gray-500 dark:text-slate-200 hover:text-black dark:hover:text-gray-500 cursor-pointer hover:border-b-2 border-blue-500 mx-2"
+          class="mt-5 font-semibold md:text-lg text-gray-500 dark:text-slate-200 hover:text-black dark:hover:text-gray-500 cursor-pointer hover:border-b-2 border-blue-500 mx-2"
         >
           Photos
         </a>
