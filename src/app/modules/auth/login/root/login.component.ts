@@ -39,7 +39,7 @@ export class LoginComponent {
 
   public changeMode(): void {
     if (this.darkModeLoc != 'null') {
-      this.mode.toogleCurrentDarkMidea();
+      this.mode.toogleCurrentDarkMode();
     }
   }
 }

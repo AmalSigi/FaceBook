@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { Router } from '@angular/router';
 import { DarkModeService } from '@autservice/dark-mode.service';
 
@@ -10,18 +10,17 @@ export class NavComponent implements OnInit {
   constructor(
     private readonly route: Router,
     private readonly mode: DarkModeService
-  ) {}
+  ) {
+    effect(() => (this.theme = this.mode.dark()));
+  }
   public darkModeLoc = localStorage.getItem('dark_mode');
   public theme!: boolean;
-  ngOnInit(): void {
-    this.mode.getCurrentDarkMode().subscribe((value) => {
-      this.theme = value;
-    });
-  }
+  ngOnInit(): void {}
 
   public changeMode(): void {
-    if (this.darkModeLoc != 'null') {
-      this.mode.toogleCurrentDarkMidea();
+    if (this.darkModeLoc !== 'null') {
+      this.mode.toogleCurrentDarkMode();
+      console.log(this.mode.dark());
     }
   }
   public logOut() {
